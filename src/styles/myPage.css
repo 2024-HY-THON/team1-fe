@@ -1,0 +1,112 @@
+.mypage-container {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    background-color: #f5f5f5;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 375px;
+    height: 812px;
+    margin: 0 auto;
+    align-items: center;
+  }
+  
+  .mypage-header {
+    text-align: center;
+    margin-top: 60px;
+  }
+  
+  .profile-img {
+    width: 120px;
+    height: 120px;
+  }
+  
+  .profile-name {
+    color: #555;
+    font-size:large;
+  }
+  .status-message {
+    margin-top: 10px;
+    color: #555;
+    font-size: 14px;
+  }
+
+  .mypage-content-container {
+    background-color: white;
+    border-radius: 12px;
+    width:100%;
+    margin-bottom: 140px;
+  }
+  
+  .mypage-menu {
+    padding: 10px 20px 20px 20px;
+  }
+
+  .menu-content {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .mypage-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .mypage-menu li {
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+  }
+  
+  /* .mypage-menu li:last-child {
+    border-bottom: none;
+  } */
+  
+  .mypage-menu li a {
+    text-decoration: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: inherit;
+    margin: 5px;
+  }
+  
+  .menu-icon {
+    color: #ccc;
+  }
+  
+  .menu-description {
+    color: #aaa;
+    font-size: 12px;
+    margin-top: 6px;
+  }
+  
+  .mypage-footer {
+    padding: 20px 20px 10px 20px;
+  }
+  
+  .footer-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .footer-section {
+    justify-content: space-between;
+    padding: 20px 0 0 0;
+  }
+  
+  .footer-section ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 5%;
+  }
+  
+  .footer-section li {
+    font-size: 14px;
+    margin-bottom: 10px;
+    color: #555;
+  }
+  

@@ -1,24 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import MyPage from "./pages/MyPage";
+import ChangeName from "./pages/menu/ChangeName"
+import ChangePassword from "./pages/menu/ChangePassword"
+import ChangeAddress from "./pages/menu/ChangeAddress"
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="App">
+        <Routes>
+          <Route path="/mypage" element={<MyPage />} />
+          <Route path="/" element={<MyPage />} />
+          <Route path="/mypage/change-name" element={<ChangeName />} />
+          <Route path="/mypage/change-password" element={<ChangePassword />} />
+          <Route path="/mypage/change-address" element={<ChangeAddress />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
