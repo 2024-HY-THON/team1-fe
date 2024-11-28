@@ -8,7 +8,7 @@ function Register() {
     const [confirmPassword, setConfirmPassword] = useState('');
     const [email, setEmail] = useState('');
     const [emailCode, setEmailCode] = useState("")
-    const [isUsernameChecked, setIsUsernameChecked] = useState(true); //테스트 끝나면 false로 바꿀것
+    const [isUsernameChecked, setIsUsernameChecked] = useState(false); //테스트 끝나면 false로 바꿀것
     const [isSendEmail, setIsSendEmail] = useState(false)
     const [isEmailVerified, setIsEmailVerified] = useState(false);
     const [isTimerActive, setIsTimerActive] = useState(false);
@@ -31,7 +31,7 @@ function Register() {
 
     const handleSubmit = async () => {
         try {
-            const response = await fetch("/register", {
+            const response = await fetch("http://localhost:8080/register", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -75,17 +75,18 @@ function Register() {
         }
 
         try {
-            const response = await fetch("/usernameVerify", {
+            const response = await fetch("http://localhost:8080/usernameVerify", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify({ username }),
+                body: JSON.stringify({ username: username })
             });
 
             if (response.ok) {
                 setIsUsernameChecked(true);
                 setUsernameError("");
+                console.log("ok")
             } else if (response.status === 409) {
                 setIsUsernameChecked(false);
                 setUsernameError("이미 사용 중인 아이디입니다.");
@@ -103,7 +104,7 @@ function Register() {
         if (isTimerActive) return;
         setIsSendEmail(true);
         setIsTimerActive(true);
-        setTimer(5);
+        setTimer(60);
 
         const interval = setInterval(() => {
             setTimer((prev) => {
