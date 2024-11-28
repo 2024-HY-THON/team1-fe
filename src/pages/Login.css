@@ -1,13 +1,3 @@
-
-.container {
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    border-radius: 10px;
-    margin-bottom: 150px;
-}
-
 .login-logo{
     width: 147px;
     height: 147px;
@@ -30,6 +20,8 @@
     border: 2px solid #D5E5AE;
     background: #FFF;
     margin-bottom: 10px;
+    display: flex;
+    align-items: center;
 }
 
 .login-status{
@@ -109,3 +101,16 @@
     width: 1px;
 }
 
+.input-input {
+    width: 100%;
+    height: 100%;
+    border: none;
+    padding: 0 15px;
+    font-size: 16px;
+    font-family: Arial, sans-serif;
+    outline: none;
+    color: #333;
+    background: transparent;
+    border-radius: 50px;
+    box-sizing: border-box;
+}
