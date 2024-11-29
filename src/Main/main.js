@@ -1,9 +1,12 @@
 import styles from './main.module.css';
 import { useState } from 'react';
 import Calendar from './calendar';
+import DiaryWrite from './diaryWrite';
 
 const Main = () => {
   const [showCalendar, setShowCalendar] = useState(false);
+
+  const [showDiaryWrite, setShowDiaryWrite] = useState(false);
 
   return (
     <div className={styles.main}>
@@ -76,7 +79,10 @@ const Main = () => {
 
         <main className={styles.content}>
           <p className={styles.date}>2024년 11월 30일 (토요일)</p>
-          <div className={styles.questionBox}>
+          <div
+            className={styles.questionBox}
+            onClick={() => setShowDiaryWrite(true)}
+          >
             <span className={styles.question}>
               ○○님은 오늘 어떤 하루를 보내셨나요?
             </span>
@@ -84,6 +90,9 @@ const Main = () => {
               말풍선을 눌러 알려주세요!
             </span>
           </div>
+          {showDiaryWrite && (
+            <DiaryWrite onClose={() => setShowDiaryWrite(false)} />
+          )}
           <svg
             xmlns='http://www.w3.org/2000/svg'
             width='37'
