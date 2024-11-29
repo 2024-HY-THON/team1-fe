@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { NameContext } from "../../components/NameContext";
 
@@ -7,8 +7,24 @@ const ChangeName = () => {
   const [newName, setNewName] = useState(name); // 입력된 새 이름 상태
   const navigate = useNavigate();
 
+  // 페이지 로드 시 localStorage에서 저장된 이름을 불러오기
+  useEffect(() => {
+    const storedName = localStorage.getItem("userName");
+    if (storedName) {
+      setName(storedName); // Context의 상태 업데이트
+      setNewName(storedName); // 입력 필드 초기값 설정
+    }
+  }, [setName]);
+
   const handleNameChange = () => {
-    setName(newName); // 이름 업데이트
+    if (!newName.trim()) {
+      console.log("이름을 입력해주세요.");
+      return;
+    }
+
+    setName(newName); // Context 상태 업데이트
+    localStorage.setItem("userName", newName); // 이름을 localStorage에 저장
+    console.log("이름이 설정되었습니다:", newName);
     navigate("/mypage"); // 마이페이지로 이동
   };
 
