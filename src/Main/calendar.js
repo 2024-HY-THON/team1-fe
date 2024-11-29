@@ -20,10 +20,17 @@ const Calendar = ({ onClose }) => {
 
   const fetchMonthlyEmotions = async () => {
     try {
+      const token = localStorage.getItem('token');
       const response = await axios.get(
-        `http://localhost:8080/emotions/${year}/${month}`
+        `http://localhost:8080/emotions/${year}/${month}`,
+        {
+          headers: {
+            Authorization: token,
+          },
+        }
       );
       setMonthlyEmotions(response.data);
+      console.log('연결성공');
     } catch (error) {
       console.error('월별 감정 데이터 조회 실패:', error);
     }

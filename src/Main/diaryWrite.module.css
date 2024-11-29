@@ -246,3 +246,12 @@
   font-weight: 500;
   cursor: pointer;
 }
+
+.diaryInput[readonly] {
+  background-color: #f5f5f5;
+  cursor: default;
+}
+
+.emoji[style*='pointer-events: none'] {
+  cursor: default;
+}

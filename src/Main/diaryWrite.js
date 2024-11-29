@@ -1,14 +1,46 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 import styles from './diaryWrite.module.css';
+import { useCookies } from 'react-cookie';
 
 const DiaryWrite = ({ onClose }) => {
-  const [selectedMood, setSelectedMood] = useState(null);
   const [selectedEmotion, setSelectedEmotion] = useState(null);
+  const [selectedMood, setSelectedMood] = useState(null);
   const [diaryContent, setDiaryContent] = useState('');
-  const [showModal, setShowModal] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
   const [alertMessage, setAlertMessage] = useState('');
+  const [showModal, setShowModal] = useState(false);
+  const [isReadOnly, setIsReadOnly] = useState(false);
+
+  useEffect(() => {
+    const fetchTodayDiary = async () => {
+      try {
+        const token = localStorage.getItem('token');
+        const response = await axios.get('http://localhost:8080/diary/today', {
+          headers: {
+            Authorization: token,
+          },
+        });
+
+        if (response.status === 200) {
+          const emotionIndex = {
+            good: 0,
+            soso: 1,
+            bad: 2,
+          }[response.data.emotion];
+
+          setSelectedEmotion(emotionIndex);
+          setSelectedMood(response.data.type);
+          setDiaryContent(response.data.content);
+          setIsReadOnly(true);
+        }
+      } catch (error) {
+        console.error('일기 조회 실패:', error);
+      }
+    };
+
+    fetchTodayDiary();
+  }, []);
 
   const emotions = [
     <svg
@@ -74,7 +106,13 @@ const DiaryWrite = ({ onClose }) => {
         content: diaryContent,
       };
 
-      await axios.post('http://localhost:8080/diary/save', diaryData);
+      const token = localStorage.getItem('token');
+
+      await axios.post('http://localhost:8080/diary/save', diaryData, {
+        headers: {
+          Authorization: token,
+        },
+      });
       setShowModal(true);
     } catch (error) {
       console.error('일기 저장 실패:', error);
@@ -112,7 +150,9 @@ const DiaryWrite = ({ onClose }) => {
             />
           </svg>
         </button>
-        <h1 className={styles.title}>하루일기</h1>
+        <h1 className={styles.title}>
+          {isReadOnly ? '오늘의 일기' : '하루일기'}
+        </h1>
       </header>
       <div className={styles.emptyBox}></div>
 
@@ -121,7 +161,7 @@ const DiaryWrite = ({ onClose }) => {
           <span>2024년 11월 30일 (토요일)</span>
         </div>
         <div className={styles.question}>
-          <span>○○님은 오늘 어떤 하루를 보내셨나요?</span>
+          <span>ㅇㅇ님은 오늘 어떤 하루를 보내셨나요?</span>
         </div>
         <div className={styles.emojiContainer}>
           {emotions.map((emotion, index) => (
@@ -130,8 +170,8 @@ const DiaryWrite = ({ onClose }) => {
               className={`${styles.emoji} ${
                 selectedEmotion === index ? styles.selected : ''
               }`}
-              onClick={() => setSelectedEmotion(index)}
               role='button'
+              style={{ pointerEvents: isReadOnly ? 'none' : 'auto' }}
             >
               {emotion}
             </span>
@@ -149,7 +189,9 @@ const DiaryWrite = ({ onClose }) => {
               type='checkbox'
               className={styles.checkbox}
               checked={selectedMood === 'happy'}
+              disabled={isReadOnly}
               onChange={() =>
+                !isReadOnly &&
                 setSelectedMood(selectedMood === 'happy' ? null : 'happy')
               }
             />
@@ -164,7 +206,9 @@ const DiaryWrite = ({ onClose }) => {
               type='checkbox'
               className={styles.checkbox}
               checked={selectedMood === 'worry'}
+              disabled={isReadOnly}
               onChange={() =>
+                !isReadOnly &&
                 setSelectedMood(selectedMood === 'worry' ? null : 'worry')
               }
             />
@@ -175,20 +219,17 @@ const DiaryWrite = ({ onClose }) => {
 
         <textarea
           className={styles.diaryInput}
-          placeholder={
-            selectedMood === 'happy'
-              ? '행복일기로 오늘 하루를 기억해보세요'
-              : selectedMood === 'worry'
-              ? 'ㅇㅇㅇ이 ㅇㅇ님의 걱정을 들어드릴게요'
-              : '오늘 하루는 어떠셨나요?'
-          }
           value={diaryContent}
-          onChange={(e) => setDiaryContent(e.target.value)}
+          onChange={(e) => !isReadOnly && setDiaryContent(e.target.value)}
+          readOnly={isReadOnly}
+          style={{ backgroundColor: isReadOnly ? '#f5f5f5' : 'white' }}
         />
 
-        <button className={styles.submitButton} onClick={handleSubmit}>
-          완료
-        </button>
+        {!isReadOnly && (
+          <button className={styles.submitButton} onClick={handleSubmit}>
+            완료
+          </button>
+        )}
       </div>
 
       {showAlert && (
