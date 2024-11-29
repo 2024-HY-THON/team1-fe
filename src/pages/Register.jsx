@@ -80,7 +80,7 @@ function Register() {
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify({ username: username })
+                body: JSON.stringify({username: username})
             });
 
             if (response.ok) {
@@ -100,27 +100,70 @@ function Register() {
         }
     };
 
-    const handleEmailVerification = () => {
-        if (isTimerActive) return;
-        setIsSendEmail(true);
-        setIsTimerActive(true);
-        setTimer(60);
 
-        const interval = setInterval(() => {
-            setTimer((prev) => {
-                if (prev <= 1) {
-                    clearInterval(interval);
-                    setIsTimerActive(false);
-                    return 0;
-                }
-                return prev - 1;
+    const handleEmailVerification = async () => {
+        if (isTimerActive) {
+            return;
+        }
+
+        try {
+            const response = await fetch("http://localhost:8080/mail/send", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({email}),
             });
-        }, 1000);
+
+            if (response.ok) {
+                alert("인증번호가 전송되었습니다. 이메일을 확인해주세요.");
+                setIsSendEmail(true);
+                setIsTimerActive(true);
+                setTimer(180);
+
+                const interval = setInterval(() => {
+                    setTimer((prev) => {
+                        if (prev <= 1) {
+                            clearInterval(interval);
+                            setIsTimerActive(false);
+                            return 0;
+                        }
+                        return prev - 1;
+                    });
+                }, 1000);
+            } else if (response.status === 400) {
+                alert("잘못된 요청입니다. 이메일을 확인해주세요.");
+            } else {
+                alert("이메일 전송 중 문제가 발생했습니다.");
+            }
+        } catch (error) {
+            alert("서버와의 통신에 실패했습니다.");
+        }
     };
 
-    const handleEmailVertCheck = () => {
-        setIsTimerActive(false)
-        setIsEmailVerified(true);
+    const handleEmailVertCheck = async () => {
+        try {
+            const response = await fetch("http://localhost:8080/mail/verify", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({email, code: emailCode}),
+            });
+
+            if (response.ok) {
+                alert("이메일 인증이 완료되었습니다.");
+                setIsEmailVerified(true);
+                setIsTimerActive(false);
+            } else if (response.status === 400) {
+                alert("인증번호가 올바르지 않습니다. 다시 시도해주세요.");
+                setIsEmailVerified(false);
+            } else {
+                alert("이메일 인증 중 문제가 발생했습니다.");
+            }
+        } catch (error) {
+            alert("서버와의 통신에 실패했습니다.");
+        }
     };
 
     const handleConfirmPasswordChange = (e) => {
@@ -172,6 +215,7 @@ function Register() {
                         {usernameError && (
                             <p className={"error-text"}>{usernameError}</p>
                         )}
+                        {isUsernameChecked ? <p className={"success-text"}>아이디 인증이 완료되었습니다.</p>:""}
                     </div>
                     <div className={"register-contents-block"}>
                         <p className={"register-contents-text"}>비밀번호</p>
@@ -211,19 +255,19 @@ function Register() {
                             </button>
                         </div>
                         {isSendEmail ? <div className={"register-contents-input2"}>
-                            <div className={"register-contents-input2-out register-contents-input-out"}>
-                                <input className={"register-contents-input-in"} placeholder={"인증번호를 입력해주세요"}
-                                       value={emailCode}
-                                       onChange={(e) => setEmailCode(e.target.value)}/>
+                                <div className={"register-contents-input2-out register-contents-input-out"}>
+                                    <input className={"register-contents-input-in"} placeholder={"인증번호를 입력해주세요"}
+                                           value={emailCode}
+                                           onChange={(e) => setEmailCode(e.target.value)}/>
+                                </div>
+                                <button className={`register-contents-button ${isEmailVerified ? "active" : ''}`}
+                                        disabled={isEmailVerified}
+                                        onClick={handleEmailVertCheck}>
+                                    <p className={"register-contents-button-text"}>인증</p>
+                                </button>
                             </div>
-                            <button className={`register-contents-button ${isEmailVerified ? "active" : ''}`}
-                                    disabled={isEmailVerified}
-                                    onClick={handleEmailVertCheck}>
-                                <p className={"register-contents-button-text"}>인증</p>
-                            </button>
-                        </div>
-                        :
-                        ""}
+                            :
+                            ""}
 
                     </div>
                 </div>
