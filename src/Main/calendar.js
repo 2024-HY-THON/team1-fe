@@ -1,19 +1,54 @@
 import styles from './calendar.module.css';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 
 const Calendar = ({ onClose }) => {
   const today = new Date();
   const [currentDate, setCurrentDate] = useState(new Date());
+  const [monthlyEmotions, setMonthlyEmotions] = useState([]);
 
   const year = currentDate.getFullYear();
-  const month = currentDate.getMonth();
+  const month = currentDate.getMonth() + 1;
 
   const handlePrevMonth = () => {
-    setCurrentDate(new Date(year, month - 1));
+    setCurrentDate(new Date(year, month - 2));
   };
 
   const handleNextMonth = () => {
-    setCurrentDate(new Date(year, month + 1));
+    setCurrentDate(new Date(year, month));
+  };
+
+  const fetchMonthlyEmotions = async () => {
+    try {
+      const response = await axios.get(
+        `http://localhost:8080/emotions/${year}/${month}`
+      );
+      setMonthlyEmotions(response.data);
+    } catch (error) {
+      console.error('월별 감정 데이터 조회 실패:', error);
+    }
+  };
+
+  useEffect(() => {
+    fetchMonthlyEmotions();
+  }, [year, month]);
+
+  const getEmotionForDay = (day) => {
+    const emotionData = monthlyEmotions.find((item) => item.day === day);
+    return emotionData ? emotionData.emotion : null;
+  };
+
+  const getEmotionColor = (emotion) => {
+    switch (emotion) {
+      case 'good':
+        return '#FFB431';
+      case 'soso':
+        return '#9ABB4C';
+      case 'bad':
+        return '#EA6363';
+      default:
+        return '#D9D9D9';
+    }
   };
 
   // 해당 월의 첫 날과 마지막 날 구하기
@@ -80,7 +115,7 @@ const Calendar = ({ onClose }) => {
               </svg>
             </button>
             <div className={styles.monthTitle}>
-              {monthNames[month]} 감정일기
+              {monthNames[month - 1]} 감정일기
             </div>
             <button onClick={handleNextMonth} className={styles.monthButton}>
               <svg width='6' height='10' viewBox='0 0 6 10' fill='none'>
@@ -117,11 +152,9 @@ const Calendar = ({ onClose }) => {
           {currentMonthDays.map((day) => {
             const isToday =
               day === today.getDate() &&
-              month === today.getMonth() &&
+              month === today.getMonth() + 1 &&
               year === today.getFullYear();
-            const isPast =
-              new Date(year, month, day) <=
-              new Date(today.getFullYear(), today.getMonth(), today.getDate());
+            const emotion = getEmotionForDay(day);
 
             return (
               <div
@@ -139,9 +172,9 @@ const Calendar = ({ onClose }) => {
                     cx='12'
                     cy='12'
                     r='12'
-                    fill={isPast ? '#FFB800' : '#D9D9D9'}
+                    fill={emotion ? getEmotionColor(emotion) : '#D9D9D9'}
                   />
-                  {isPast && (
+                  {emotion && (
                     <>
                       <path
                         d='M7 14s2 2 5 2 5-2 5-2'

@@ -104,7 +104,7 @@
 }
 
 .calendarIcon {
-  position: ;
+  cursor: pointer;
 }
 
 .content {
@@ -139,6 +139,7 @@
   border-radius: 12px;
   background: #fff;
   gap: 1.2vh;
+  cursor: pointer;
 }
 .questionBoxPlus {
   position: relative;
@@ -164,8 +165,16 @@
   line-height: 12px;
 }
 
-.seedImg {
+.groundImg {
   display: flex;
   position: absolute;
   bottom: 15vh;
+}
+
+.plantImg {
+  position: absolute;
+  bottom: 33vh;
+}
+.plantImg:hover {
+  transform: scale(1.02);
 }

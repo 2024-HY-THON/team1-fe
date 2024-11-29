@@ -107,77 +107,40 @@ const Main = () => {
             />
           </svg>
 
-          <div className={styles.seedImg}>
+          <div className={styles.groundImg}>
             <svg
               width='375'
-              height='382'
-              viewBox='0 0 375 382'
+              height='276'
+              viewBox='0 0 375 276'
               fill='none'
               xmlns='http://www.w3.org/2000/svg'
             >
-              <g clip-path='url(#clip0_76_40)'>
+              <g clip-path='url(#clip0_279_405)'>
                 <rect
                   width='375'
                   height='812'
-                  transform='translate(0 -351)'
+                  transform='translate(0 -457)'
                   fill='#F6F6F6'
                 />
                 <path
-                  d='M237.612 158.385C356.077 97.0289 395.132 96.0498 456.176 158.385L520 689H-76V228.956C-8.99976 180.037 116.608 221.055 237.612 158.385Z'
-                  fill='url(#paint0_linear_76_40)'
+                  d='M237.612 52.3848C356.077 -8.97112 395.132 -9.95018 456.176 52.3849L520 583H-76V122.956C-8.99976 74.0367 116.608 115.055 237.612 52.3848Z'
+                  fill='url(#paint0_linear_279_405)'
                 />
-                <g filter='url(#filter0_d_76_40)'>
+                <g filter='url(#filter0_d_279_405)'>
                   <path
-                    d='M49.772 156.745C-74.1817 110.31 -226.051 122.736 -300 189.703V728H422V233.777C340.835 181.223 201.729 213.671 49.772 156.745Z'
-                    fill='url(#paint1_linear_76_40)'
+                    d='M49.772 50.7453C-74.1817 4.31027 -226.051 16.7362 -300 83.7025V622H422V127.777C340.835 75.2229 201.729 107.671 49.772 50.7453Z'
+                    fill='url(#paint1_linear_279_405)'
                   />
                 </g>
-                <ellipse cx='34' cy='230' rx='14' ry='4' fill='#F1FEB4' />
-                <ellipse cx='64.5' cy='248' rx='6.5' ry='2' fill='#F1FEB4' />
-                <ellipse cx='44' cy='261' rx='14' ry='4' fill='#F1FEB4' />
-                <g filter='url(#filter1_d_76_40)'></g>
-                <path
-                  d='M196.058 148.719C190.521 87.6069 157.85 29.5043 120.766 36.5877C111.522 38.3533 104.302 45.5965 100.186 54.0598C83.8854 87.5759 109.208 107.04 131.911 112.087C147.809 115.622 179.345 122.841 186.148 149.536C186.969 152.759 190.52 154.767 193.494 153.28C195.203 152.425 196.23 150.622 196.058 148.719Z'
-                  fill='url(#paint2_linear_76_40)'
-                />
-                <path
-                  d='M186.583 142.426C200.627 58.6631 256.257 33.7453 287.857 50.7986C307.5 63 303.952 118.353 265.832 125.625C256.987 127.313 242.159 126.223 228.409 126.436C207.855 126.753 199.169 145.626 201.043 166.096L202.695 184.15C202.791 185.195 203.019 186.223 203.376 187.21L204.823 191.221C208.411 201.162 197.202 209.9 188.436 203.995C185.238 201.841 183.412 198.16 183.631 194.31L186.583 142.426Z'
-                  fill='url(#paint3_linear_76_40)'
-                />
-                <path
-                  d='M249.081 201.702C242.088 191.705 185.402 158.513 145.116 199.031C140.479 203.695 136.185 210.471 144.533 221.678C152.881 232.885 239.399 228.116 245.001 224.259C250.602 220.401 256.075 211.699 249.081 201.702Z'
-                  fill='url(#paint4_linear_76_40)'
-                />
-                <path
-                  d='M249.081 201.702C242.088 191.705 185.402 158.513 145.116 199.031C140.479 203.695 136.185 210.471 144.533 221.678C152.881 232.885 239.399 228.116 245.001 224.259C250.602 220.401 256.075 211.699 249.081 201.702Z'
-                  fill='black'
-                  fill-opacity='0.2'
-                />
-                <path
-                  d='M249.081 201.702C242.088 191.705 185.402 158.513 145.116 199.031C140.479 203.695 136.185 210.471 144.533 221.678C152.881 232.885 239.399 228.116 245.001 224.259C250.602 220.401 256.075 211.699 249.081 201.702Z'
-                  fill='url(#paint5_linear_76_40)'
-                  fill-opacity='0.2'
-                />
-                <ellipse
-                  cx='170.5'
-                  cy='193.5'
-                  rx='4.5'
-                  ry='2.5'
-                  fill='#FFF7B6'
-                />
-                <ellipse
-                  cx='160.5'
-                  cy='198.5'
-                  rx='3.5'
-                  ry='2.5'
-                  fill='#FFF7B6'
-                />
+                <ellipse cx='34' cy='124' rx='14' ry='4' fill='#F1FEB4' />
+                <ellipse cx='64.5' cy='142' rx='6.5' ry='2' fill='#F1FEB4' />
+                <ellipse cx='44' cy='155' rx='14' ry='4' fill='#F1FEB4' />
               </g>
               <defs>
                 <filter
-                  id='filter0_d_76_40'
+                  id='filter0_d_279_405'
                   x='-303.6'
-                  y='105.4'
+                  y='-0.6'
                   width='773.2'
                   height='650.2'
                   filterUnits='userSpaceOnUse'
@@ -200,124 +163,137 @@ const Main = () => {
                   <feBlend
                     mode='normal'
                     in2='BackgroundImageFix'
-                    result='effect1_dropShadow_76_40'
+                    result='effect1_dropShadow_279_405'
                   />
                   <feBlend
                     mode='normal'
                     in='SourceGraphic'
-                    in2='effect1_dropShadow_76_40'
-                    result='shape'
-                  />
-                </filter>
-                <filter
-                  id='filter1_d_76_40'
-                  x='-5.5'
-                  y='-175.5'
-                  width='405'
-                  height='218.181'
-                  filterUnits='userSpaceOnUse'
-                  color-interpolation-filters='sRGB'
-                >
-                  <feFlood flood-opacity='0' result='BackgroundImageFix' />
-                  <feColorMatrix
-                    in='SourceAlpha'
-                    type='matrix'
-                    values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0'
-                    result='hardAlpha'
-                  />
-                  <feOffset dy='4' />
-                  <feGaussianBlur stdDeviation='28.25' />
-                  <feComposite in2='hardAlpha' operator='out' />
-                  <feColorMatrix
-                    type='matrix'
-                    values='0 0 0 0 0.549857 0 0 0 0 0.587138 0 0 0 0 0.997222 0 0 0 0.17 0'
-                  />
-                  <feBlend
-                    mode='normal'
-                    in2='BackgroundImageFix'
-                    result='effect1_dropShadow_76_40'
-                  />
-                  <feBlend
-                    mode='normal'
-                    in='SourceGraphic'
-                    in2='effect1_dropShadow_76_40'
+                    in2='effect1_dropShadow_279_405'
                     result='shape'
                   />
                 </filter>
                 <linearGradient
-                  id='paint0_linear_76_40'
+                  id='paint0_linear_279_405'
                   x1='207.766'
-                  y1='85.4089'
+                  y1='-20.5911'
                   x2='222.352'
-                  y2='688.992'
+                  y2='582.992'
                   gradientUnits='userSpaceOnUse'
                 >
                   <stop stop-color='#CCEA7A' />
                   <stop offset='1' stop-color='#578127' />
                 </linearGradient>
                 <linearGradient
-                  id='paint1_linear_76_40'
+                  id='paint1_linear_279_405'
                   x1='78.2434'
-                  y1='79.5645'
+                  y1='-26.4355'
                   x2='64.3454'
-                  y2='728.072'
+                  y2='622.072'
                   gradientUnits='userSpaceOnUse'
                 >
                   <stop stop-color='#EDF6A2' />
                   <stop offset='1' stop-color='#578127' />
                 </linearGradient>
+                <clipPath id='clip0_279_405'>
+                  <rect
+                    width='375'
+                    height='812'
+                    fill='white'
+                    transform='translate(0 -457)'
+                  />
+                </clipPath>
+              </defs>
+            </svg>
+          </div>
+          <div className={styles.plantImg}>
+            <svg
+              width='204'
+              height='195'
+              viewBox='0 0 204 195'
+              fill='none'
+              xmlns='http://www.w3.org/2000/svg'
+            >
+              <path
+                d='M101.058 112.719C95.5214 51.6069 62.8501 -6.49566 25.766 0.587653C16.5219 2.35334 9.30262 9.59653 5.1864 18.0598C-11.1144 51.5759 14.2078 71.0398 36.9109 76.0873C52.8095 79.622 84.3446 86.8414 91.1481 113.536C91.9694 116.759 95.52 118.767 98.4942 117.28C100.203 116.425 101.23 114.622 101.058 112.719Z'
+                fill='url(#paint0_linear_302_565)'
+              />
+              <path
+                d='M91.583 106.426C105.627 22.6631 161.257 -2.25466 192.857 14.7986C211.165 27.5888 208.953 82.3525 170.833 89.6254C161.987 91.313 147.16 90.2234 133.409 90.4357C112.856 90.7531 104.17 109.626 106.043 130.096L107.695 148.15C107.791 149.195 108.02 150.223 108.376 151.21L109.823 155.221C113.411 165.162 102.202 173.9 93.4365 167.995C90.2381 165.841 88.412 162.16 88.631 158.31L91.583 106.426Z'
+                fill='url(#paint1_linear_302_565)'
+              />
+              <path
+                d='M154.081 165.702C147.088 155.705 90.4014 122.513 50.1154 163.031C45.4785 167.695 41.1853 174.471 49.5333 185.678C57.8813 196.885 144.399 192.116 150.001 188.259C155.602 184.401 161.075 175.699 154.081 165.702Z'
+                fill='url(#paint2_linear_302_565)'
+              />
+              <path
+                d='M154.081 165.702C147.088 155.705 90.4014 122.513 50.1154 163.031C45.4785 167.695 41.1853 174.471 49.5333 185.678C57.8813 196.885 144.399 192.116 150.001 188.259C155.602 184.401 161.075 175.699 154.081 165.702Z'
+                fill='black'
+                fill-opacity='0.2'
+              />
+              <path
+                d='M154.081 165.702C147.088 155.705 90.4014 122.513 50.1154 163.031C45.4785 167.695 41.1853 174.471 49.5333 185.678C57.8813 196.885 144.399 192.116 150.001 188.259C155.602 184.401 161.075 175.699 154.081 165.702Z'
+                fill='url(#paint3_linear_302_565)'
+                fill-opacity='0.2'
+              />
+              <ellipse
+                cx='75.5003'
+                cy='157.5'
+                rx='4.5'
+                ry='2.5'
+                fill='#FFF7B6'
+              />
+              <ellipse
+                cx='65.5003'
+                cy='162.5'
+                rx='3.5'
+                ry='2.5'
+                fill='#FFF7B6'
+              />
+              <defs>
                 <linearGradient
-                  id='paint2_linear_76_40'
-                  x1='145.659'
-                  y1='36'
-                  x2='145.659'
-                  y2='156.382'
+                  id='paint0_linear_302_565'
+                  x1='50.6594'
+                  y1='0'
+                  x2='50.6594'
+                  y2='120.382'
                   gradientUnits='userSpaceOnUse'
                 >
-                  <stop stop-color='#D3E946' />
+                  <stop stop-color='#BACD3F' />
                   <stop offset='1' stop-color='#84A32D' />
                 </linearGradient>
                 <linearGradient
-                  id='paint3_linear_76_40'
-                  x1='241.139'
-                  y1='45.7354'
-                  x2='241.139'
-                  y2='222.682'
+                  id='paint1_linear_302_565'
+                  x1='146.139'
+                  y1='9.73535'
+                  x2='146.139'
+                  y2='186.682'
                   gradientUnits='userSpaceOnUse'
                 >
-                  <stop stop-color='#D3E946' />
+                  <stop stop-color='#BACD3F' />
                   <stop offset='1' stop-color='#84A32D' />
                 </linearGradient>
                 <linearGradient
-                  id='paint4_linear_76_40'
-                  x1='184.216'
-                  y1='176.182'
-                  x2='185.418'
-                  y2='226.729'
+                  id='paint2_linear_302_565'
+                  x1='89.2155'
+                  y1='140.182'
+                  x2='90.4178'
+                  y2='190.729'
                   gradientUnits='userSpaceOnUse'
                 >
                   <stop stop-color='#E1924D' />
                   <stop offset='1' stop-color='#B96C49' />
                 </linearGradient>
                 <linearGradient
-                  id='paint5_linear_76_40'
-                  x1='159'
-                  y1='294.5'
-                  x2='180'
-                  y2='162'
+                  id='paint3_linear_302_565'
+                  x1='64.0003'
+                  y1='258.5'
+                  x2='85.0003'
+                  y2='126'
                   gradientUnits='userSpaceOnUse'
                 >
                   <stop stop-opacity='0' />
                   <stop offset='1' stop-color='#FFE44B' />
                 </linearGradient>
-                <clipPath id='clip0_76_40'>
-                  <rect
-                    width='375'
-                    height='812'
-                    fill='white'
-                    transform='translate(0 -351)'
-                  />
-                </clipPath>
               </defs>
             </svg>
           </div>

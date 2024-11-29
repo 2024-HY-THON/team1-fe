@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import axios from 'axios';
 import styles from './diaryWrite.module.css';
 
 const DiaryWrite = ({ onClose }) => {
@@ -48,7 +49,7 @@ const DiaryWrite = ({ onClose }) => {
     </svg>,
   ];
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (selectedEmotion === null) {
       setAlertMessage('오늘의 감정을 선택해주세요!');
       setShowAlert(true);
@@ -65,7 +66,21 @@ const DiaryWrite = ({ onClose }) => {
       return;
     }
 
-    setShowModal(true);
+    try {
+      const emotionMap = ['good', 'soso', 'bad'];
+      const diaryData = {
+        emotion: emotionMap[selectedEmotion],
+        type: selectedMood,
+        content: diaryContent,
+      };
+
+      await axios.post('http://localhost:8080/diary/save', diaryData);
+      setShowModal(true);
+    } catch (error) {
+      console.error('일기 저장 실패:', error);
+      setAlertMessage('일기 저장에 실패했습니다. 다시 시도해주세요.');
+      setShowAlert(true);
+    }
   };
 
   const handleConfirm = () => {
