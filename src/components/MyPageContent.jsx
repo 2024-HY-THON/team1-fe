@@ -6,7 +6,7 @@ import "./../styles/myPage.css";
 const MyPageContent = () => {
   return (
     <div className="mypage-content-container">
-      <div>
+      <div className="menu-footer-wrapper">
         <div className="mypage-menu">
           <ul>
             <li>
@@ -45,12 +45,16 @@ const MyPageContent = () => {
           <div className="footer-section">
             <span>문의 및 알림</span>
             <ul className="footer-list">
-              <li>고객센터</li>
-              <li>공지사항</li>
-              <li>쿠폰 사용내역</li>
-              <li>자주 묻는 질문</li>
-              <li>약관 및 정책</li>
-              <li>문의 내역</li>
+              <div className="footer-list-left">
+                <li>고객센터</li>
+                <li>공지사항</li>
+                <li>쿠폰 사용내역</li>
+              </div>
+              <div className="footer-list-right">
+                <li>자주 묻는 질문</li>
+                <li>약관 및 정책</li>
+                <li>문의 내역</li>
+              </div>
             </ul>
           </div>
         </div>
