@@ -350,6 +350,14 @@ const Main = () => {
           </div>
         </main>
         {showCalendar && <Calendar onClose={() => setShowCalendar(false)} />}
+        <div className={styles.gaugeContainer}>
+          <div className={styles.gaugeMessage}>
+            하루일기 2편 더 작성하면 Lv. 2 묘목으로 성장해요!
+          </div>
+          <div className={styles.gaugeBarOuter}>
+            <div className={styles.gaugeBarInner}></div>
+          </div>
+        </div>
         <div className={styles.navBar}>
           <svg
             width='24'
