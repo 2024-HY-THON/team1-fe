@@ -3,14 +3,28 @@
     height: 147px;
     flex-shrink: 0;
     background-color: gray;
-    margin-top: 25%;
+    margin-top: 20%;
     margin-bottom: 20%;
 }
 
+.login-logo-container{
+    width: 100%;
+    height: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
 .login-container{
-    width: 85%;
+    width: 90%;
     flex-shrink: 0;
-    max-width: 320px;
+}
+
+.login-container-container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
 }
 
 .input-form{
