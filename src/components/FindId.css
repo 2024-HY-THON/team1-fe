@@ -1,0 +1,21 @@
+.find-id-container {
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .find-id-container input {
+    margin: 10px;
+    padding: 8px;
+    width: 200px;
+  }
+  
+  .find-id-container button {
+    padding: 8px 16px;
+    cursor: pointer;
+  }
+  
+  .find-id-message {
+    margin-top: 10px;
+    color: red;
+  }
+  
