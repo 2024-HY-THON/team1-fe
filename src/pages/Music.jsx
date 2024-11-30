@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./Music.css";
+import headerline from "../assets/headerline.svg";
 
 function Music() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -17,6 +18,12 @@ function Music() {
       {/* 헤더 */}
       <header className="header">
         <h1 className="header-title">배경음악</h1>
+        <div
+          className="header-line"
+          style={{
+            backgroundImage: `url(${headerline})`, // 불러온 이미지 적용
+          }}
+        ></div>
       </header>
 
       {/* 현재 배경음악 */}

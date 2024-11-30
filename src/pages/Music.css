@@ -15,9 +15,10 @@
     color: #686868;
   }
   
+  /* 헤더 스타일 */
   .header {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     color: #222222;
     padding: 10px 15px;
@@ -26,6 +27,16 @@
   .header-title {
     font-size: 18px;
     font-weight: bold;
+  }
+
+  .header-line {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 3px; /* 라인 높이 */
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
   }
 
   /* 현재 배경음악 */
@@ -156,4 +167,4 @@
     border: none;
     border-radius: 50px;
     cursor: pointer;
-  }
+  }  
