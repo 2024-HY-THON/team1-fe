@@ -10,7 +10,7 @@ const MyPageContent = () => {
         <div className="mypage-menu">
           <ul>
             <li>
-              <Link to="/mypage/change-name">
+              <Link to="/ch-na">
                 <span>이름</span>
                 <span className="menu-icon">
                   <img src={arrow} alt="arrow" className="arrow-img" />
@@ -18,7 +18,7 @@ const MyPageContent = () => {
               </Link>
             </li>
             <li>
-              <Link to="/mypage/change-password">
+              <Link to="/ch-pass">
                 <span>비밀번호 변경</span>
                 <span className="menu-icon">
                   <img src={arrow} alt="arrow" className="arrow-img" />
@@ -26,7 +26,7 @@ const MyPageContent = () => {
               </Link>
             </li>
             <li>
-              <Link to="/mypage/change-address">
+              <Link to="/ch-add">
                 <div className="menu-content">
                   <span>주소 설정</span>
                   <span className="menu-description">

@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import "./../../styles/menuPage.css";
+import {useNavigate} from 'react-router-dom'
 
 const ChangePassword = () => {
     const [currentPassword, setCurrentPassword] = useState("");
@@ -7,31 +8,50 @@ const ChangePassword = () => {
     const [confirmPassword, setConfirmPassword] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
     const [successMessage, setSuccessMessage] = useState("");
+    const navigate = useNavigate();
 
-    const correctCurrentPassword = "password123";
 
-    const handleChangePassword = () => {
-        if (currentPassword !== correctCurrentPassword) {
-            setErrorMessage("현재 비밀번호가 올바르지 않습니다.");
-            setSuccessMessage("");
-            return;
-        }
+    const handleChangePassword = async () => {
         if (newPassword !== confirmPassword) {
             setErrorMessage("새 비밀번호와 비밀번호 확인이 일치하지 않습니다.");
             setSuccessMessage("");
             return;
         }
-        if (newPassword.length < 8) {
-            setErrorMessage("새 비밀번호는 8자 이상이어야 합니다.");
-            setSuccessMessage("");
-            return;
-        }
 
-        setErrorMessage("");
-        setSuccessMessage("비밀번호가 성공적으로 변경되었습니다.");
-        setCurrentPassword("");
-        setNewPassword("");
-        setConfirmPassword("");
+        try {
+            const token = localStorage.getItem('token' || "");
+            const response = await fetch("http://localhost:8080/mypage/updatePassword", {
+                method: "PATCH",
+                headers: {
+                    "Authorization": `${token}`,
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    oldPassword: currentPassword,
+                    newPassword: newPassword,
+                }),
+            });
+            console.log(response)
+            const data = await response.json();
+
+            if (response.ok) {
+                setErrorMessage("");
+                setSuccessMessage(data.message);
+                setCurrentPassword("");
+                setNewPassword("");
+                setConfirmPassword("");
+                setTimeout(() => {
+                    navigate("/mypage");
+                }, 1000);
+            } else {
+                setSuccessMessage("");
+                setErrorMessage(data.message);
+            }
+        } catch (error) {
+            console.error("Error updating password:", error);
+            setSuccessMessage("");
+            setErrorMessage("비밀번호 변경에 실패했습니다.");
+        }
     };
 
     return (
