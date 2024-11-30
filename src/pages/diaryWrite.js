@@ -11,8 +11,26 @@ const DiaryWrite = ({ onClose }) => {
   const [alertMessage, setAlertMessage] = useState('');
   const [showModal, setShowModal] = useState(false);
   const [isReadOnly, setIsReadOnly] = useState(false);
+  const [userName, setUserName] = useState('');
 
   useEffect(() => {
+    const fetchUserName = async () => {
+      try {
+        const token = localStorage.getItem('token');
+        const response = await axios.get('http://localhost:8080/user/info', {
+          headers: {
+            Authorization: token,
+          },
+        });
+
+        if (response.status === 200) {
+          setUserName(response.data.name); // 이름 설정
+        }
+      } catch (error) {
+        console.error('사용자 이름 조회 실패:', error);
+      }
+    };
+
     const fetchTodayDiary = async () => {
       try {
         const token = localStorage.getItem('token');
@@ -40,6 +58,7 @@ const DiaryWrite = ({ onClose }) => {
     };
 
     fetchTodayDiary();
+    fetchUserName();
   }, []);
 
   const emotions = [
@@ -161,7 +180,7 @@ const DiaryWrite = ({ onClose }) => {
           <span>2024년 11월 30일 (토요일)</span>
         </div>
         <div className={styles.question}>
-          <span>ㅇㅇ님은 오늘 어떤 하루를 보내셨나요?</span>
+          <span>{userName}님은 오늘 어떤 하루를 보내셨나요?</span>
         </div>
         <div className={styles.emojiContainer}>
           {emotions.map((emotion, index) => (
@@ -223,6 +242,13 @@ const DiaryWrite = ({ onClose }) => {
           onChange={(e) => !isReadOnly && setDiaryContent(e.target.value)}
           readOnly={isReadOnly}
           style={{ backgroundColor: isReadOnly ? '#f5f5f5' : 'white' }}
+          placeholder={
+            !selectedMood
+              ? '오늘은 어떤 날이었나요?'
+              : selectedMood === 'happy'
+              ? '행복일기로 오늘 하루를 기억해보세요'
+              : `리플릿이 ${userName}님의 고민을 들어드릴게요!`
+          }
         />
 
         {!isReadOnly && (
