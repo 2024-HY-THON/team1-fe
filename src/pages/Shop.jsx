@@ -32,17 +32,16 @@ function Shop() {
                 const response = await fetch('http://localhost:8080/tree/info', {
                     method: 'GET',
                     headers: {
-                        'Authorization': `Bearer ${token}`,
+                        'Authorization': `${token}`,
                         'Content-Type': 'application/json',
                     },
                 });
                 if (!response.ok) {
                     console.log('Failed to fetch tree info');
                 }
-                console.log(response.headers.get("exp"))
+
                 const data = await response.json();
-                console.log(data)
-                setTreeInfo(data); // 응답 받은 데이터로 상태 업데이트
+                setTreeInfo(data);
             } catch (error) {
                 console.error('Error fetching tree info:', error);
             }
@@ -52,23 +51,21 @@ function Shop() {
     }, []);
 
     useEffect(() => {
-        if (treeInfo.wear !== null) { // Ensure wear is not null
+        if (treeInfo.wear !== null) {
             const fetchWear = async () => {
                 try {
                     const token = localStorage.getItem('token' || "");
+                    console.log(`http://localhost:8080/wear/${treeInfo.wear}`)
                     const response = await fetch(`http://localhost:8080/wear/${treeInfo.wear}`, {
                         method: 'GET',
                         headers: {
-                            'Authorization': `Bearer ${token}`,
+                            'Authorization': `${token}`,
                             'Content-Type': 'application/json',
                         },
                     });
-                    console.log(response)
                     if (!response.ok) {
                         console.log(`HTTP error! status: ${response.status}`);
                     }
-                    const data = await response.json();
-                    console.log('Wear response:', data);
                 } catch (error) {
                     console.error('Error fetching wear:', error);
                 }
@@ -167,7 +164,7 @@ function Shop() {
                                                             <button className="shop-product-contents" onClick={() => {
                                                                 setTreeInfo(prevTreeInfo => ({
                                                                     ...prevTreeInfo,  // 기존 상태 유지
-                                                                    wear: item.id,    // wear 값을 item.id로 업데이트
+                                                                    wear: nextItem.id,    // wear 값을 item.id로 업데이트
                                                                 }));
                                                             }}>
                                                                 <div className="shop-product-inner">
@@ -183,13 +180,14 @@ function Shop() {
                                             if (activeCategory === 1 && index >= 6 && index <= 10 && index % 2 === 0) {
                                                 const nextItem = categories[index + 1];
                                                 return (
-                                                    <div className="shop-product-group" key={item.id} onClick={() => {
-                                                        setTreeInfo(prevTreeInfo => ({
-                                                            ...prevTreeInfo,  // 기존 상태 유지
-                                                            wear: item.id,    // wear 값을 item.id로 업데이트
-                                                        }));
-                                                    }}>
-                                                        <button className="shop-product-contents">
+                                                    <div className="shop-product-group" key={item.id}>
+                                                        <button className="shop-product-contents"
+                                                                onClick={() => {
+                                                                    setTreeInfo(prevTreeInfo => ({
+                                                                        ...prevTreeInfo,  // 기존 상태 유지
+                                                                        wear: item.id,    // wear 값을 item.id로 업데이트
+                                                                    }));
+                                                                }}>
                                                             <div className="shop-product-inner">
                                                                 <img src={`/icon/${item.id}.png`} alt={item.content}/>
                                                             </div>
@@ -198,7 +196,7 @@ function Shop() {
                                                             <button className="shop-product-contents" onClick={() => {
                                                                 setTreeInfo(prevTreeInfo => ({
                                                                     ...prevTreeInfo,  // 기존 상태 유지
-                                                                    wear: item.id,    // wear 값을 item.id로 업데이트
+                                                                    wear: nextItem.id,    // wear 값을 item.id로 업데이트
                                                                 }));
                                                             }}>
                                                                 <div className="shop-product-inner">
@@ -228,7 +226,7 @@ function Shop() {
                                                             <button className="shop-product-contents2" onClick={() => {
                                                                 setTreeInfo(prevTreeInfo => ({
                                                                     ...prevTreeInfo,  // 기존 상태 유지
-                                                                    wear: item.id,    // wear 값을 item.id로 업데이트
+                                                                    wear: nextItem.id,    // wear 값을 item.id로 업데이트
                                                                 }));
                                                             }}>
                                                                 <div className="shop-product-inner2">
