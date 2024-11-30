@@ -3,7 +3,7 @@ import React, { useState} from "react";
 import "./../../styles/menuPage.css";
 
 const ChangeName = () => {
-  const [newName, setNewName] = useState(name);
+  const [newName, setNewName] = useState(""); //여기 백엔드에서 받아오기
 
 
 
@@ -21,7 +21,7 @@ const ChangeName = () => {
           onChange={(e) => setNewName(e.target.value)}
           placeholder="새 이름을 입력하세요"
         />
-        <button onClick={handleNameChange}>이름 변경</button>
+        <button>이름 변경</button>
       </div>
     </div>
   );
