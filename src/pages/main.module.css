@@ -350,3 +350,14 @@
 .highlight {
   color: #9ac54f;
 }
+.iconContainer {
+  display: inline-block;
+  cursor: pointer;
+  padding: 10px;
+}
+
+.iconContainer svg {
+  width: 100%;
+  height: 100%;
+}
+
