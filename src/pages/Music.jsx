@@ -56,6 +56,13 @@ function Music() {
               <p className="music-subtitle">ARTIST NAME</p>
             </div>
           </div>
+          <div className="popular-music-item" onClick={openModal}>
+            <div className="music-thumbnail"></div>
+            <div className="music-info">
+              <p className="music-title">PLAYPLAY</p>
+              <p className="music-subtitle">ARTIST NAME</p>
+            </div>
+          </div>
         </div>
       </section>
 
