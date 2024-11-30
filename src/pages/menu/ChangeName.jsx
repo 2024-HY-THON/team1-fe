@@ -1,30 +1,11 @@
-import React, { useState, useEffect, useContext } from "react";
-import { useNavigate } from "react-router-dom";
-import { NameContext } from "../../components/NameContext";
+import React, { useState} from "react";
+
 import "./../../styles/menuPage.css";
 
 const ChangeName = () => {
-  const { name, setName } = useContext(NameContext);
   const [newName, setNewName] = useState(name);
-  const navigate = useNavigate();
 
-  useEffect(() => {
-    const storedName = localStorage.getItem("userName");
-    if (storedName) {
-      setName(storedName);
-      setNewName(storedName);
-    }
-  }, [setName]);
 
-  const handleNameChange = () => {
-    if (!newName.trim()) {
-      console.log("이름을 입력해주세요.");
-      return;
-    }
-    setName(newName);
-    localStorage.setItem("userName", newName);
-    navigate("/mypage");
-  };
 
   return (
     <div className="menu-page-container">
