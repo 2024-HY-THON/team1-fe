@@ -1,11 +1,13 @@
 import React, {useState} from 'react';
 import "./Login.css"
+import {useNavigate} from 'react-router-dom'
 
 function Login() {
     const [autoLogin, setAutoLogin] = useState(false);
-    const [username, setUsername] = useState('');  // id 상태
-    const [password, setPassword] = useState('');  // pw 상태
-    const [errorMessage, setErrorMessage] = useState('');  // 오류 메시지 상태
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
+    const [errorMessage, setErrorMessage] = useState('');
+    const navigate = useNavigate();
 
     const handleAutoLoginClick = () => {
         setAutoLogin(!autoLogin);
@@ -30,6 +32,7 @@ function Login() {
 
             if (response.ok) {
                 localStorage.setItem('token', response.headers.get('Authorization'));
+                navigate('/main');
             } else if (response.status === 401) {
                 setErrorMessage('아이디 또는 비밀번호가 잘못되었습니다.');
             } else {
@@ -39,6 +42,9 @@ function Login() {
             console.error('오류:', error);
             alert('서버와 연결할 수 없습니다.');
         }
+    };
+    const handleRegisterClick = () => {
+        navigate('/register');
     };
 
     return (
@@ -99,7 +105,9 @@ function Login() {
                         <div className={"login-services-bar"}/>
                         <p>비밀번호 찾기</p>
                         <div className={"login-services-bar"}/>
-                        <p>회원가입</p>
+                        <p onClick={handleRegisterClick} style={{cursor: 'pointer'}}>
+                            회원가입
+                        </p>
                     </div>
                 </div>
             </div>

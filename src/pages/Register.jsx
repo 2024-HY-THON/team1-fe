@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import "./Register.css";
+import {useNavigate} from 'react-router-dom'
 
 function Register() {
     const [name, setName] = useState('');
@@ -8,13 +9,14 @@ function Register() {
     const [confirmPassword, setConfirmPassword] = useState('');
     const [email, setEmail] = useState('');
     const [emailCode, setEmailCode] = useState("")
-    const [isUsernameChecked, setIsUsernameChecked] = useState(false); //테스트 끝나면 false로 바꿀것
+    const [isUsernameChecked, setIsUsernameChecked] = useState(false);
     const [isSendEmail, setIsSendEmail] = useState(false)
     const [isEmailVerified, setIsEmailVerified] = useState(false);
     const [isTimerActive, setIsTimerActive] = useState(false);
     const [timer, setTimer] = useState(0);
     const [passwordError, setPasswordError] = useState(false);
     const [usernameError, setUsernameError] = useState("");
+    const navigate = useNavigate();
 
 
     const isFormValid = () => {
@@ -56,6 +58,7 @@ function Register() {
                 setIsUsernameChecked(false);
                 setIsSendEmail(false);
                 setIsEmailVerified(false);
+                navigate("/login");
             } else if (response.status === 409) {
                 alert("이미 등록된 사용자입니다.");
             } else if (response.status === 400) {
@@ -174,15 +177,20 @@ function Register() {
             setPasswordError(false);
         }
     };
+    const handleBackToLogin = () => {
+        navigate("/login");
+    };
 
     return (
         <div className={"container"}>
             <div className={"banner-container"}>
                 <div className={"banner"}>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="10" height="18" viewBox="0 0 10 18" fill="none">
-                        <path d="M9 1L1 9L9 17" stroke="#ACCD5E" strokeWidth="2" strokeLinecap="round"
-                              strokeLinejoin="round"/>
-                    </svg>
+                    <div className={"banner-icon-container"} onClick={handleBackToLogin}>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="10" height="18" viewBox="0 0 10 18" fill="none">
+                            <path d="M9 1L1 9L9 17" stroke="#ACCD5E" strokeWidth="2" strokeLinecap="round"
+                                  strokeLinejoin="round"/>
+                        </svg>
+                    </div>
                     <p className={"banner-text"}>회원가입</p>
                 </div>
             </div>
