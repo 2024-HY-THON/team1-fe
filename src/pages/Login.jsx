@@ -44,7 +44,7 @@ function Login() {
 
   return (
     <div className={"container"}>
-      <div className={"login-logo"}>temp</div>
+      <img src="/loginlogo.png" alt="Login Logo" className="login-logo-image" />
       <div className={"login-container"}>
         <form onSubmit={handleSubmit}>
           <div className={"input-form"}>
