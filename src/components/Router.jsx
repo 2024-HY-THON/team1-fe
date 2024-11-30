@@ -5,6 +5,7 @@ import Register from '../pages/Register';
 import Shop from '../pages/Shop';
 import Main from '../pages/main';
 import MyPage from '../pages/MyPage';
+import Music from '../pages/Music';
 
 export default function Router() {
   return (
