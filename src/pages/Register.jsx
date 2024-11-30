@@ -182,111 +182,117 @@ function Register() {
     };
 
     return (
-        <div className={"container"}>
-            <div className={"banner-container"}>
-                <div className={"banner"}>
-                    <div className={"banner-icon-container"} onClick={handleBackToLogin}>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="10" height="18" viewBox="0 0 10 18" fill="none">
-                            <path d="M9 1L1 9L9 17" stroke="#ACCD5E" strokeWidth="2" strokeLinecap="round"
-                                  strokeLinejoin="round"/>
-                        </svg>
+        <div className={"main"}>
+            <div className={"container"}>
+                <div className={"banner-container"}>
+                    <div className={"banner"}>
+                        <div className={"banner-icon-container"} onClick={handleBackToLogin}>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="10" height="18" viewBox="0 0 10 18"
+                                 fill="none">
+                                <path d="M9 1L1 9L9 17" stroke="#ACCD5E" strokeWidth="2" strokeLinecap="round"
+                                      strokeLinejoin="round"/>
+                            </svg>
+                        </div>
+                        <p className={"banner-text"}>회원가입</p>
                     </div>
-                    <p className={"banner-text"}>회원가입</p>
                 </div>
-            </div>
-            <div className={"banner-underline"}/>
-            <div className={"register-contents-wrapper"}>
-                <div className={"register-conents-container"}>
-                    <div className={"register-contents-block"}>
-                        <p className={"register-contents-text"}>이름</p>
-                        <div className={"register-contents-input"}>
-                            <div className={"register-contents-input-out"}>
-                                <input className={"register-contents-input-in"} placeholder={"이름을 입력하세요."} value={name}
-                                       onChange={(e) => setName(e.target.value)}/>
-                            </div>
-                        </div>
-                    </div>
-                    <div className={"register-contents-block"}>
-                        <p className={"register-contents-text"}>아이디</p>
-                        <div className={"register-contents-input2"}>
-                            <div className={"register-contents-input2-out register-contents-input-out"}>
-                                <input className={"register-contents-input-in"} placeholder={"아이디를 입력해주세요"}
-                                       value={username}
-                                       onChange={(e) => setUsername(e.target.value)}/>
-                            </div>
-                            <button className={`register-contents-button ${isUsernameChecked ? "active" : ''}`}
-                                    disabled={isUsernameChecked}
-                                    onClick={handleUsernameCheck}>
-                                <p className={"register-contents-button-text"}>중복확인</p>
-                            </button>
-                        </div>
-                        {usernameError && (
-                            <p className={"error-text"}>{usernameError}</p>
-                        )}
-                        {isUsernameChecked ? <p className={"success-text"}>아이디 인증이 완료되었습니다.</p>:""}
-                    </div>
-                    <div className={"register-contents-block"}>
-                        <p className={"register-contents-text"}>비밀번호</p>
-                        <div className={"register-contents-input"}>
-                            <div className={"register-contents-input-out"}>
-                                <input className={"register-contents-input-in"} placeholder={"비밀번호"} value={password}
-                                       onChange={(e) => setPassword(e.target.value)}
-                                       type={password}/>
-                            </div>
-                        </div>
-                        <div className={"register-contents-input"}>
-                            <div className={"register-contents-input-out"}>
-                                <input className={"register-contents-input-in"} placeholder={"비밀번호 확인"}
-                                       value={confirmPassword}
-                                       onChange={handleConfirmPasswordChange}
-                                       type={password}/>
-                            </div>
-                        </div>
-                        {passwordError && (
-                            <p className={"error-text"}>비밀번호를 확인해주세요.</p>
-                        )}
-                    </div>
-                    <div className={"register-contents-block"}>
-                        <p className={"register-contents-text"}>이메일 인증</p>
-                        <div className={"register-contents-input2"}>
-                            <div className={"register-contents-input2-out register-contents-input-out"}>
-                                <input className={"register-contents-input-in"} placeholder={"이메일을 입력해주세요"}
-                                       value={email}
-                                       onChange={(e) => setEmail(e.target.value)}/>
-                            </div>
-                            <button
-                                className={`register-contents-button ${isEmailVerified ? "active" : !isTimerActive ? 'inactive' : 'active'}`}
-                                onClick={handleEmailVerification}
-                                disabled={isTimerActive || isEmailVerified}
-                            >
-                                <p className={"register-contents-button-text"}>{isTimerActive ? `${timer}s` : "인증번호 받기"}</p>
-                            </button>
-                        </div>
-                        {isSendEmail ? <div className={"register-contents-input2"}>
-                                <div className={"register-contents-input2-out register-contents-input-out"}>
-                                    <input className={"register-contents-input-in"} placeholder={"인증번호를 입력해주세요"}
-                                           value={emailCode}
-                                           onChange={(e) => setEmailCode(e.target.value)}/>
+                <div className={"banner-underline"}/>
+                <div className={"register-contents-wrapper"}>
+                    <div className={"register-conents-container"}>
+                        <div className={"register-contents-block"}>
+                            <p className={"register-contents-text"}>이름</p>
+                            <div className={"register-contents-input"}>
+                                <div className={"register-contents-input-out"}>
+                                    <input className={"register-contents-input-in"} placeholder={"이름을 입력하세요."}
+                                           value={name}
+                                           onChange={(e) => setName(e.target.value)}/>
                                 </div>
-                                <button className={`register-contents-button ${isEmailVerified ? "active" : ''}`}
-                                        disabled={isEmailVerified}
-                                        onClick={handleEmailVertCheck}>
-                                    <p className={"register-contents-button-text"}>인증</p>
+                            </div>
+                        </div>
+                        <div className={"register-contents-block"}>
+                            <p className={"register-contents-text"}>아이디</p>
+                            <div className={"register-contents-input2"}>
+                                <div className={"register-contents-input2-out register-contents-input-out"}>
+                                    <input className={"register-contents-input-in"} placeholder={"아이디를 입력해주세요"}
+                                           value={username}
+                                           onChange={(e) => setUsername(e.target.value)}/>
+                                </div>
+                                <button className={`register-contents-button ${isUsernameChecked ? "active" : ''}`}
+                                        disabled={isUsernameChecked}
+                                        onClick={handleUsernameCheck}>
+                                    <p className={"register-contents-button-text"}>중복확인</p>
                                 </button>
                             </div>
-                            :
-                            ""}
+                            {usernameError && (
+                                <p className={"error-text"}>{usernameError}</p>
+                            )}
+                            {isUsernameChecked ? <p className={"success-text"}>아이디 인증이 완료되었습니다.</p> : ""}
+                        </div>
+                        <div className={"register-contents-block"}>
+                            <p className={"register-contents-text"}>비밀번호</p>
+                            <div className={"register-contents-input"}>
+                                <div className={"register-contents-input-out"}>
+                                    <input className={"register-contents-input-in"} placeholder={"비밀번호"}
+                                           value={password}
+                                           onChange={(e) => setPassword(e.target.value)}
+                                           type={password}/>
+                                </div>
+                            </div>
+                            <div className={"register-contents-input"}>
+                                <div className={"register-contents-input-out"}>
+                                    <input className={"register-contents-input-in"} placeholder={"비밀번호 확인"}
+                                           value={confirmPassword}
+                                           onChange={handleConfirmPasswordChange}
+                                           type={password}/>
+                                </div>
+                            </div>
+                            {passwordError && (
+                                <p className={"error-text"}>비밀번호를 확인해주세요.</p>
+                            )}
+                        </div>
+                        <div className={"register-contents-block"}>
+                            <p className={"register-contents-text"}>이메일 인증</p>
+                            <div className={"register-contents-input2"}>
+                                <div className={"register-contents-input2-out register-contents-input-out"}>
+                                    <input className={"register-contents-input-in"} placeholder={"이메일을 입력해주세요"}
+                                           value={email}
+                                           onChange={(e) => setEmail(e.target.value)}/>
+                                </div>
+                                <button
+                                    className={`register-contents-button ${isEmailVerified ? "active" : !isTimerActive ? 'inactive' : 'active'}`}
+                                    onClick={handleEmailVerification}
+                                    disabled={isTimerActive || isEmailVerified}
+                                >
+                                    <p className={"register-contents-button-text"}>{isTimerActive ? `${timer}s` : "인증번호 받기"}</p>
+                                </button>
+                            </div>
+                            {isSendEmail ? <div className={"register-contents-input2"}>
+                                    <div className={"register-contents-input2-out register-contents-input-out"}>
+                                        <input className={"register-contents-input-in"} placeholder={"인증번호를 입력해주세요"}
+                                               value={emailCode}
+                                               onChange={(e) => setEmailCode(e.target.value)}/>
+                                    </div>
+                                    <button className={`register-contents-button ${isEmailVerified ? "active" : ''}`}
+                                            disabled={isEmailVerified}
+                                            onClick={handleEmailVertCheck}>
+                                        <p className={"register-contents-button-text"}>인증</p>
+                                    </button>
+                                </div>
+                                :
+                                ""}
 
+                        </div>
                     </div>
-                </div>
 
+                </div>
+                <button className={`register-submit-container ${isFormValid() ? 'active' : ''}`}
+                        disabled={!isFormValid()}
+                        onClick={handleSubmit}>
+                    <p className={"register-submit-text"}>가입하기</p>
+                </button>
             </div>
-            <button className={`register-submit-container ${isFormValid() ? 'active' : ''}`}
-                    disabled={!isFormValid()}
-                    onClick={handleSubmit}>
-                <p className={"register-submit-text"}>가입하기</p>
-            </button>
         </div>
+
 
     );
 }

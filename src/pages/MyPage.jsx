@@ -5,10 +5,13 @@ import "./../styles/myPage.css";
 
 const MyPage = () => {
   return (
-    <div className="mypage-container">
-      <MyPageHeader />
-      <MyPageContent />
-    </div>
+      <div className={"main"}>
+          <div className="container">
+              <MyPageHeader/>
+              <MyPageContent/>
+          </div>
+      </div>
+
   );
 };
 
