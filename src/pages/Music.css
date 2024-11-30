@@ -1,0 +1,146 @@
+/* 전체 페이지 스타일 */
+.music-page {
+    width: 100%;
+    max-width: 375px;
+    margin: 0 auto;
+    padding-bottom: 60px; /* 네비게이션 바 공간 */
+    font-family: Arial, sans-serif;
+    background-color: #F6F6F6;
+  }
+  
+  /* 섹션 공통 스타일 */
+  .section-title {
+    font-size: 16px;
+    margin: 20px 10px 10px;
+    color: #686868;
+  }
+  
+  /* 현재 배경음악 */
+  .current-music {
+    margin-bottom: 30px;
+  }
+  
+  .current-music-box {
+    width: 90%;
+    margin: 0 auto;
+    height: 150px;
+    background-color: #eaeaea;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .current-music-title {
+    font-size: 16px;
+    font-weight: bold;
+    color: #222222;
+  }
+  
+  /* 맞춤 추천 음악 */
+  .recommended-music-grid {
+    display: flex;
+    gap: 10px;
+    padding: 0 10px;
+    overflow-x: auto; /* 가로 스크롤 */
+  }
+  
+  .music-card {
+    width: 80px;
+    height: 80px;
+    background-color: #eaeaea;
+    border-radius: 8px;
+    flex-shrink: 0;
+  }
+  
+  /* 인기 음악 */
+  .popular-music-list {
+    padding: 0 10px;
+  }
+  
+  .popular-music-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+  }
+  
+  .music-thumbnail {
+    width: 50px;
+    height: 50px;
+    background-color: #eaeaea;
+    border-radius: 6px;
+  }
+  
+  .music-info {
+    flex: 1;
+  }
+  
+  .music-title {
+    font-size: 14px;
+    font-weight: bold;
+    color: #222222;
+    margin: 0;
+  }
+  
+  .music-subtitle {
+    font-size: 12px;
+    color: #686868;
+    margin: 0;
+  }
+  
+  /* 모달 */
+  .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .modal-content {
+    width: 90%;
+    max-width: 300px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+  }
+  
+  .modal-thumbnail {
+    width: 80px;
+    height: 80px;
+    margin: 10px auto;
+    background-color: #eaeaea;
+    border-radius: 50%;
+  }
+  
+  .modal-title {
+    font-size: 16px;
+    font-weight: bold;
+    color: #222222;
+    margin: 10px 0 5px;
+  }
+  
+  .modal-artist {
+    font-size: 14px;
+    color: #686868;
+    margin: 0 0 20px;
+  }
+  
+  .modal-button {
+    width: 30%;
+    padding: 10px 0;
+    background-color: #ACCD5E;
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+  }
