@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import styles from './diaryWrite.module.css';
-import { useCookies } from 'react-cookie';
 
 const DiaryWrite = ({ onClose }) => {
   const [selectedEmotion, setSelectedEmotion] = useState(null);
@@ -163,9 +162,9 @@ const DiaryWrite = ({ onClose }) => {
             <path
               d='M9 1L1 9L9 17'
               stroke='#ACCD5E'
-              stroke-width='2'
-              stroke-linecap='round'
-              stroke-linejoin='round'
+              strokeWidth='2'
+              strokeLinecap='round'
+              strokeLinejoin='round'
             />
           </svg>
         </button>

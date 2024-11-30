@@ -1,0 +1,30 @@
+/* 전체 화면을 꽉 채우는 컨테이너 스타일 */
+.splash-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* 위쪽 정렬 */
+    align-items: center;
+    height: 100vh;
+    background-color: #fff; /* 배경색 */
+    position: relative; /* 이미지 배치를 위한 상대 위치 설정 */
+}
+
+/* 제목 SVG 스타일 */
+.splash-title {
+    margin-top: 191px; /* 화면 위쪽에서 간격 */
+    width: 130px;
+}
+
+/* 부제목 SVG 스타일 */
+.splash-subtitle {
+    margin-top: 30px; /* 제목과 부제목 간 간격 */
+    width: 240px;
+}
+
+/* 이미지 SVG 스타일 */
+.splash-image {
+    position: absolute; /* 화면 하단에 고정 */
+    bottom: 0; /* 하단에 딱 붙음 */
+    width: 100%; /* 화면 가로 크기에 맞춤 */
+    height: auto; /* 비율 유지 */
+}
