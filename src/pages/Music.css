@@ -15,6 +15,20 @@
     color: #686868;
   }
   
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #222222;
+    color: white;
+    padding: 10px 15px;
+  }
+  
+  .header-title {
+    font-size: 18px;
+    font-weight: bold;
+  }
+
   /* 현재 배경음악 */
   .current-music {
     margin-bottom: 30px;

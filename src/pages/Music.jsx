@@ -14,6 +14,11 @@ function Music() {
 
   return (
     <div className="music-page">
+      {/* 헤더 */}
+      <header className="header">
+        <h1 className="header-title">배경음악</h1>
+      </header>
+
       {/* 현재 배경음악 */}
       <section className="current-music">
         <h2 className="section-title">현재 배경음악</h2>
