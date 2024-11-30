@@ -1,0 +1,204 @@
+/* 전체 페이지 스타일 */
+html,
+body {
+  height: 100%; /* 화면 전체를 차지하도록 설정 */
+  margin: 0; /* 기본 마진 제거 */
+}
+
+.musicPage {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%; /* 전체 화면 높이 */
+  max-width: 375px;
+  margin: 0 auto;
+  font-family: Arial, sans-serif;
+  background-color: #f6f6f6;
+  overflow: hidden; /* 화면 넘침 방지 */
+}
+
+/* 섹션 공통 스타일 */
+.sectionTitle {
+  font-size: 16px;
+  color: #686868;
+}
+
+/* 헤더 스타일 */
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #222222;
+  padding: 10px 15px;
+  position: relative; /* 절대 위치로 헤더 라인 추가할 수 있도록 설정 */
+}
+
+.headerTitle {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.headerLine {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* 현재 배경음악 */
+.currentMusic {
+  margin-bottom: 30px;
+}
+
+.currentMusicBox {
+  width: 90%;
+  margin: 0 auto;
+  height: 150px;
+  background-color: #eaeaea;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.currentMusicTitle {
+  font-size: 16px;
+  font-weight: bold;
+  color: #222222;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 맞춤 추천 음악 */
+.recommendedMusic {
+  padding: 3% 5%;
+}
+
+.recommendedMusicGrid {
+  display: flex;
+  gap: 10px;
+  padding: 0 10px;
+  overflow-x: auto; /* 가로 스크롤 */
+}
+
+.musicGrid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 2%;
+}
+
+.musicCard {
+  width: 100%;
+  aspect-ratio: 1/1; /* 정사각형 비율로 설정 */
+  background-color: #eaeaea;
+  border-radius: 8px;
+  position: relative; /* 앨범 커버 사진만 보이게 할 수 있도록 */
+  overflow: hidden; /* 커버 사진이 카드 영역을 벗어나지 않도록 */
+}
+
+/* 앨범 커버 사진 스타일 */
+.musicCard img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* 앨범 커버 이미지가 카드에 맞춰 크기 조정 */
+}
+
+/* 제목과 가수 숨기기 */
+.musicInfoOverlay {
+  display: none; /* 제목과 가수 정보 숨김 */
+}
+
+/* 인기 음악 */
+.popularMusicList {
+  padding: 0 10px;
+}
+
+.popularMusicItem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.musicThumbnail {
+  width: 50px;
+  height: 50px;
+  background-color: #eaeaea;
+  border-radius: 6px;
+}
+
+.musicInfo {
+  flex: 1;
+}
+
+.musicTitle {
+  font-size: 14px;
+  font-weight: bold;
+  color: #222222;
+  margin: 0;
+}
+
+.musicSubtitle {
+  font-size: 12px;
+  color: #686868;
+  margin: 0;
+}
+
+/* 모달 */
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modalContent {
+  width: 90%;
+  max-width: 300px;
+  background-color: white;
+  padding: 20px;
+  border-radius: 10%;
+  text-align: center;
+}
+
+.modalThumbnail {
+  width: 80px;
+  height: 80px;
+  margin: 10px auto;
+  background-color: #eaeaea;
+  border-radius: 10%;
+}
+
+.modalTitle {
+  font-size: 16px;
+  font-weight: bold;
+  color: #222222;
+  margin: 10px 0 5px;
+}
+
+.modalArtist {
+  font-size: 14px;
+  color: #686868;
+  margin: 0 0 20px;
+}
+
+.modalButton {
+  width: 30%;
+  padding: 10px 0;
+  background-color: #accd5e;
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+}

@@ -20,6 +20,8 @@ const Main = () => {
 
   const [name, setName] = useState('');
 
+  const [music, setMusic] = useState();
+
   // 일기 작성 여부 확인
   useEffect(() => {
     const checkDiary = async () => {
@@ -61,6 +63,11 @@ const Main = () => {
         });
         setExp(response.data.exp);
         setName(response.data.name); // 이름 설정
+        setMusic({
+          musicTitle: response.data.title,
+          musicArtist: response.data.artist,
+          id: response.data.id,
+        });
       } catch (error) {
         console.error('트리 정보 조회 실패:', error);
       }
