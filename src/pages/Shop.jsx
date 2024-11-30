@@ -55,7 +55,6 @@ function Shop() {
             const fetchWear = async () => {
                 try {
                     const token = localStorage.getItem('token' || "");
-                    console.log(`http://localhost:8080/wear/${treeInfo.wear}`)
                     const response = await fetch(`http://localhost:8080/wear/${treeInfo.wear}`, {
                         method: 'GET',
                         headers: {

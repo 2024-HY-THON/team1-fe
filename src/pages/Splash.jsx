@@ -13,7 +13,7 @@ function Splash() {
             navigate("/login");
         }, 2000);
 
-        return () => clearTimeout(timer); // 타이머 정리
+        return () => clearTimeout(timer);
     }, [navigate]);
 
     return (
