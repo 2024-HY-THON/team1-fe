@@ -1,0 +1,192 @@
+.shop-container {
+    width: 100%;
+    justify-content: center;
+    display: flex;
+}
+
+.shop-container-wrapper {
+    width: 90%;
+}
+
+.shop-image-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    margin-bottom: -30px;
+}
+
+.shop-top-image {
+    width: 100%;
+    max-width: 700px;
+    height: 300px; /*임시 나중에 이미지 넣으면 바꾸어놓을것*/
+    display: block;
+    background-color: gray;
+}
+
+.shop-contents-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    z-index: 5;
+}
+
+.shop-contents-wrapper {
+    width: 100%;
+
+    max-width: 696px;
+}
+
+.shop-category-container {
+    height: 30px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.shop-category-area {
+    height: 100%;
+    display: flex;
+    justify-content: flex-start;
+    gap: 12px;
+}
+
+.shop-category {
+    width: 60px;
+    height: 100%;
+    border-radius: 12px 12px 0 0;
+    z-index: 10;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.shop-category-image-wrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.shop-category-image {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    object-fit: contain;
+}
+
+.shop-category.active {
+    border: 2px solid #ACCD5E;
+    background: white;
+    border-bottom: 3px solid white;
+}
+
+.shop-category.inactive {
+    border: 2px solid white;
+    background: #ACCD5E;
+    border-bottom: 2px solid #ACCD5E;
+    cursor: pointer;
+}
+
+.shop-product-container-wrapper {
+    width: 100%;
+    z-index: 7;
+}
+
+.shop-product-container {
+    margin-top: -2px;
+    width: auto;
+    height: 300px;
+    background-color: white;
+    border: 2px solid #ACCD5E;
+    padding: 32px 45px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+}
+
+.shop-product-scroll-wrapper {
+    overflow-x: auto;
+    width: 100%;
+    white-space: nowrap;
+}
+
+.shop-product-contents-wrapper {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 10px;
+}
+
+.shop-product-contents {
+    height: 120px;
+    width: 120px;
+    margin: 5px;
+    flex-shrink: 0;
+    border-radius: 13px;
+    border: 3px solid #ACCD5E;
+    background: rgba(253, 240, 211, 0.50);
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.shop-product-contents2 {
+    height: 120px;
+    width: 250px;
+    margin: 5px;
+    flex-shrink: 0;
+    border-radius: 13px;
+    border: 3px solid #ACCD5E;
+    background: rgba(253, 240, 211, 0.50);
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.shop-product-inner2 {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.shop-product-inner2 img {
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+    position: absolute;
+    bottom: -1px;
+    left: -1px;
+}
+
+.shop-product-inner {
+    height: 60%;
+    width: 60%;
+    overflow: hidden;
+    position: relative;
+}
+
+.shop-product-inner img {
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.shop-product-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
