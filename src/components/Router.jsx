@@ -1,13 +1,13 @@
 import React from "react";
-import { BrowserRouter, Routes, Route, Navigate, Link, useLocation } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
 import Shop from "../pages/Shop";
 import Main from "../pages/main";
 import MyPage from "../pages/MyPage";
-import ChangePassword from '../pages/menu/ChangePassword'
-import ChangeName from '../pages/menu/ChangeName'
-import ChangeAddress from '../pages/menu/ChangeAddress'
+import ChangePassword from '../pages/menu/ChangePassword';
+import ChangeName from '../pages/menu/ChangeName';
+import ChangeAddress from '../pages/menu/ChangeAddress';
 
 export default function Router() {
     const isAuthenticated = () => {
@@ -20,31 +20,20 @@ export default function Router() {
 
     return (
         <BrowserRouter>
-            <RouterContent isAuthenticated={isAuthenticated} ProtectedRoute={ProtectedRoute} />
+            <RouterContent ProtectedRoute={ProtectedRoute} />
         </BrowserRouter>
     );
 }
 
 function RouterContent({ ProtectedRoute }) {
-    const location = useLocation();
-    const hideNavRoutes = ["/login", "/register"];
-
     return (
         <>
-            {!hideNavRoutes.includes(location.pathname) && (
-                <nav>
-                    <Link to="/shop">Shop</Link>
-                    <Link to="/main">Main</Link>
-                    <Link to="/mypage">My Page</Link>
-                </nav>
-            )}
-
             <Routes>
                 <Route exact path="/login" element={<Login />} />
                 <Route exact path="/register" element={<Register />} />
                 <Route exact path="/ch-pass" element={<ChangePassword />} />
                 <Route exact path="/ch-na" element={<ChangeName />} />
-                <Route exact path="/ch-add" element={<ChangeAddress/>} />
+                <Route exact path="/ch-add" element={<ChangeAddress />} />
 
                 <Route
                     exact

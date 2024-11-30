@@ -117,7 +117,7 @@ const Main = () => {
     }
 
     setPrevExp(exp);
-  }, [exp]);
+  }, [exp, prevExp]);
 
   return (
     <div className={"main"} onClick={handlePageClick}>
