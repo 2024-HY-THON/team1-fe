@@ -12,13 +12,20 @@ code {
     monospace;
 }
 
+.main {
+  width: 100%;
+  background: #f6f6f6;
+  overflow: hidden;
+}
+
 .container {
+  max-width: 375px;
   margin: 0 auto;
+  height: 812px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  border-radius: 10px;
-  margin-bottom: 150px;
+  position: relative;
+  overflow: hidden;
 }
 
 * {
@@ -40,6 +47,15 @@ code {
   width: 90%;
   display: flex;
   justify-content: space-between;
+}
+
+.banner-icon-container {
+  width: 18px;
+  height: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
 }
 
 .banner-text{

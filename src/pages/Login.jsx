@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./Login.css";
@@ -7,6 +8,7 @@ function Login() {
   const [username, setUsername] = useState(""); // id 상태
   const [password, setPassword] = useState(""); // pw 상태
   const [errorMessage, setErrorMessage] = useState(""); // 오류 메시지 상태
+
 
   const handleAutoLoginClick = () => {
     setAutoLogin(!autoLogin);
@@ -29,23 +31,29 @@ function Login() {
         body: JSON.stringify({ username, password }),
       });
 
-      if (response.ok) {
-        localStorage.setItem("token", response.headers.get("Authorization"));
-      } else if (response.status === 401) {
-        setErrorMessage("아이디 또는 비밀번호가 잘못되었습니다.");
-      } else {
-        setErrorMessage("알 수 없는 오류가 발생했습니다.");
-      }
-    } catch (error) {
-      console.error("오류:", error);
-      alert("서버와 연결할 수 없습니다.");
-    }
-  };
+            if (response.ok) {
+                localStorage.setItem('token', response.headers.get('Authorization'));
+                navigate('/main');
+            } else if (response.status === 401) {
+                setErrorMessage('아이디 또는 비밀번호가 잘못되었습니다.');
+            } else {
+                setErrorMessage('알 수 없는 오류가 발생했습니다.');
+            }
+        } catch (error) {
+            console.error('오류:', error);
+            alert('서버와 연결할 수 없습니다.');
+        }
+    };
+    const handleRegisterClick = () => {
+        navigate('/register');
+    };
 
-  return (
-    <div className={"container"}>
-      <img src="/loginlogo.png" alt="Login Logo" className="login-logo-image" />
-      <div className={"login-container"}>
+    return (
+        <div className={"main"}>
+            <div className={"container"}>
+                <img src="/loginlogo.png" alt="Login Logo" className="login-logo-image" />
+                <div className={"login-container-container"}>
+                    <div className={"login-container"}>
         <form onSubmit={handleSubmit}>
           <div className={"input-form"}>
             <input
@@ -106,6 +114,27 @@ function Login() {
                 </svg>
               )}
               <p className={"auto-login-text"}> 자동로그인</p>
+                                </div>
+                            </div>
+                            <button className={"login-button"}>
+                                <p className={"login-button-text"}>
+                                    로그인
+                                </p>
+                            </button>
+                        </form>
+                        <div className={"login-services-container"}>
+                            <div className={"login-services"}>
+                                <p>아이디 찾기</p>
+                                <div className={"login-services-bar"}/>
+                                <p>비밀번호 찾기</p>
+                                <div className={"login-services-bar"}/>
+                                <p onClick={handleRegisterClick} style={{cursor: 'pointer'}}>
+                                    회원가입
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
           </div>
           <button className={"login-button"}>
@@ -128,6 +157,5 @@ function Login() {
       </div>
     </div>
   );
-}
 
 export default Login;
